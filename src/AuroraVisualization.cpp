@@ -1,14 +1,13 @@
 #include "pch.hpp"
 #include <AuroraVisualization.hpp>
 
-namespace SSPHH
-{
+namespace SSPHH {
 	using Fluxions::Vector3f;
 
 	void AuroraViz::OnUpdate(double timeStamp) {}
 
-	void AuroraViz::RenderFrame(double frameno)
-	{
+
+	void AuroraViz::RenderFrame(double frameno) {
 		return;
 		frameno *= 8.0f;
 		int frame1 = int(frameno) % FRAME_COUNT;
@@ -18,21 +17,16 @@ namespace SSPHH
 		Matrix4f M;
 		M.Translate(0.0f, 3.0f, 0.0f);
 		M.Scale(0.001f, 0.001f, 0.001f);
-		for (int i = 0; i < NUM_SPLINES; i++)
-		{
-			if (!visibleFrames[i][frame1] && !visibleFrames[i][frame2])
-				continue;
+		for (int i = 0; i < NUM_SPLINES; i++) {
+			if (!visibleFrames[i][frame1] && !visibleFrames[i][frame2]) continue;
 			auto start1 = mesh_frames[i].Surfaces[frame1].first;
 			auto start2 = mesh_frames[i].Surfaces[frame2].first;
-			if (mesh_frames[i].Surfaces[frame1].count < NUM_POINTS)
-				continue;
-			if (mesh_frames[i].Surfaces[frame2].count < NUM_POINTS)
-				continue;
+			if (mesh_frames[i].Surfaces[frame1].count < NUM_POINTS) continue;
+			if (mesh_frames[i].Surfaces[frame2].count < NUM_POINTS) continue;
 			glBegin(GL_LINE_LOOP);
-			for (int pt = 0; pt < NUM_POINTS; pt++)
-			{
-				auto &vtx1 = mesh_frames[i].Vertices[start1 + pt];
-				auto &vtx2 = mesh_frames[i].Vertices[start2 + pt];
+			for (int pt = 0; pt < NUM_POINTS; pt++) {
+				auto& vtx1 = mesh_frames[i].Vertices[start1 + pt];
+				auto& vtx2 = mesh_frames[i].Vertices[start2 + pt];
 				Color4f c = Fluxions::lerp(t, vtx1.color, vtx2.color);
 				Vector3f pos = Fluxions::lerp(t, vtx1.position, vtx2.position);
 				pos *= 1.0f / 6471.0f;
@@ -41,10 +35,9 @@ namespace SSPHH
 			}
 			glEnd();
 			glBegin(GL_LINES);
-			for (int pt = 0; pt < NUM_POINTS; pt++)
-			{
-				auto &vtx1 = mesh_frames[i].Vertices[start1 + pt];
-				auto &vtx2 = mesh_frames[i].Vertices[start2 + pt];
+			for (int pt = 0; pt < NUM_POINTS; pt++) {
+				auto& vtx1 = mesh_frames[i].Vertices[start1 + pt];
+				auto& vtx2 = mesh_frames[i].Vertices[start2 + pt];
 				Color4f c = Fluxions::lerp(t, vtx1.color, vtx2.color);
 				Vector3f pos1 = Fluxions::lerp(t, vtx1.position, vtx2.position);
 				pos1 *= 1.0f / 6471.0f;
@@ -57,62 +50,53 @@ namespace SSPHH
 		}
 	}
 
-	void AuroraViz::loadSpline(int which, const char *path)
-	{
+
+	void AuroraViz::loadSpline(int which, const char* path) {
 		Hf::StopWatch stopwatch;
 		Fluxions::string_vector lines;
 		visibleFrames[which].resize(FRAME_COUNT, 0);
 		ReadLines(path, lines, false);
 		bool visible = false;
-		int frameno{-1};
-		int framesRead{0};
-		int frameIndex{-1};
-		for (auto &line : lines)
-		{
+		int frameno{ -1 };
+		int framesRead{ 0 };
+		int frameIndex{ -1 };
+		for (auto& line : lines) {
 			std::istringstream istr(line);
 			std::string token;
 
-			if (frameno < 0)
-			{
+			if (frameno < 0) {
 				istr >> token;
-				if (token == "invisible")
-				{
+				if (token == "invisible") {
 					visible = false;
 					frameno = -1;
 					continue;
 				}
 
-				if (token == "visible")
-				{
+				if (token == "visible") {
 					visible = true;
 					frameno = -1;
 					framesRead = 0;
 					continue;
 				}
 
-				if (token == "frame")
-				{
+				if (token == "frame") {
 					istr >> token;
 					istr >> frameno;
 					frameIndex = frameno - FRAME_START;
 					visibleFrames[which][frameIndex] = visible ? 1 : 0;
 					mesh_frames[which].beginSurface(Fluxions::SimpleGeometryMesh::LineLoop);
-					if (!visible)
-						frameno = -1;
+					if (!visible) frameno = -1;
 					continue;
 				}
 
-				if (token == "no")
-				{
+				if (token == "no") {
 					continue;
 				}
 			}
-			else if (framesRead == NUM_POINTS)
-			{
+			else if (framesRead == NUM_POINTS) {
 				frameno = -1;
 			}
-			else
-			{
+			else {
 				Vector3f p = Fluxions::ReadVector3f(istr);
 				mesh_frames[which].texcoord2f(uvs[which][framesRead].x, uvs[which][framesRead].y);
 				mesh_frames[which].color3f(uvs[which][framesRead].z, uvs[which][framesRead].z, uvs[which][framesRead].z);
@@ -123,6 +107,7 @@ namespace SSPHH
 		HFLOGINFO("Splines '%s' read in %3.2fms", path, stopwatch.Stop_msf());
 	}
 
+
 	//void AuroraViz::loadSpline(int which, const char* path) {
 	//	std::ifstream fin(path);
 	//	for (int i = 0; i < NUM_POINTS; i++) {
@@ -132,29 +117,27 @@ namespace SSPHH
 	//	}
 	//}
 
-	void AuroraViz::loadUV(int which, const char *path)
-	{
+
+	void AuroraViz::loadUV(int which, const char* path) {
 		std::ifstream fin(path);
-		for (int i = 0; i < NUM_POINTS; i++)
-		{
+		for (int i = 0; i < NUM_POINTS; i++) {
 			fin >> uvs[which][i].x;
 			fin >> uvs[which][i].y;
 		}
 	}
 
-	void AuroraViz::loadBrightness(int which, const char *path)
-	{
-		std "ssphh-data/resources fin(path);
-			for (int i = 0; i < NUM_POINTS; i++)
-		{
+
+	void AuroraViz::loadBrightness(int which, const char* path) {
+		std::ifstream fin(path);
+		for (int i = 0; i < NUM_POINTS; i++) {
 			int index;
 			fin >> index;
 			fin >> uvs[which][i].z;
 		}
 	}
 
-	void AuroraViz::load()
-	{
+
+	void AuroraViz::load() {
 		return;
 		//static const char* splinefiles[NUM_SPLINES]{
 		//	"ssphh-data/resources/aurora/22100_1.data",
@@ -163,30 +146,29 @@ namespace SSPHH
 		//	"ssphh-data/resources/aurora/22100_3.data",
 		//	"ssphh-data/resources/aurora/22100_3-1.data",
 		//	"ssphh-data/resources/aurora/22100_4.data" };
-		static const char *splinefiles[NUM_SPLINES]{
+		static const char* splinefiles[NUM_SPLINES]{
 			"ssphh-data/resources/aurora/curtainMain.data",
 			"ssphh-data/resources/aurora/secondaryCurtain.data",
 			"ssphh-data/resources/aurora/secondaryCurtain-1.data",
 			"ssphh-data/resources/aurora/tertiaryCurtain.data",
 			"ssphh-data/resources/aurora/tertiaryCurtain-1.data",
-			"ssphh-data/resources/aurora/clouds.data"};
-		static char *uvfiles[NUM_SPLINES] =
-			{"ssphh-data/resources/aurora/curtainMain.uv",
-			 "ssphh-data/resources/aurora/secondaryCurtain.uv",
-			 "ssphh-data/resources/aurora/secondaryCurtain-1.uv",
-			 "ssphh-data/resources/aurora/tertiaryCurtain.uv",
-			 "ssphh-data/resources/aurora/tertiaryCurtain-1.uv",
-			 "ssphh-data/resources/aurora/clouds.uv"};
-		static char *brightfiles[NUM_SPLINES] =
-			{"ssphh-data/resources/aurora/curtainMain.brightness",
-			 "ssphh-data/resources/aurora/secondaryCurtain.brightness",
-			 "ssphh-data/resources/aurora/secondaryCurtain.brightness",
-			 "ssphh-data/resources/aurora/tertiaryCurtain.brightness",
-			 "ssphh-data/resources/aurora/tertiaryCurtain.brightness",
-			 "ssphh-data/resources/aurora/clouds.brightness"};
+			"ssphh-data/resources/aurora/clouds.data" };
+		static char* uvfiles[NUM_SPLINES] =
+		{ "ssphh-data/resources/aurora/curtainMain.uv",
+		  "ssphh-data/resources/aurora/secondaryCurtain.uv",
+		  "ssphh-data/resources/aurora/secondaryCurtain-1.uv",
+		  "ssphh-data/resources/aurora/tertiaryCurtain.uv",
+		  "ssphh-data/resources/aurora/tertiaryCurtain-1.uv",
+		  "ssphh-data/resources/aurora/clouds.uv" };
+		static char* brightfiles[NUM_SPLINES] =
+		{ "ssphh-data/resources/aurora/curtainMain.brightness",
+		  "ssphh-data/resources/aurora/secondaryCurtain.brightness",
+		  "ssphh-data/resources/aurora/secondaryCurtain.brightness",
+		  "ssphh-data/resources/aurora/tertiaryCurtain.brightness",
+		  "ssphh-data/resources/aurora/tertiaryCurtain.brightness",
+		  "ssphh-data/resources/aurora/clouds.brightness" };
 
-		for (int i = 0; i < NUM_SPLINES; i++)
-		{
+		for (int i = 0; i < NUM_SPLINES; i++) {
 			splines[i].resize(NUM_POINTS);
 			uvs[i].resize(NUM_POINTS);
 			loadUV(i, uvfiles[i]);
@@ -195,4 +177,4 @@ namespace SSPHH
 		}
 		HFLOGINFO("Aurora Data Loaded");
 	}
-} // namespace SSPHH
+}
