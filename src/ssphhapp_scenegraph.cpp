@@ -48,7 +48,7 @@ namespace SSPHH
 			moon = &ssg.dirToLights.getPtr("moon")->ublock;
 			moonGG = ssg.geometryGroups.getPtr("moon");
 		}
-		if (moon) {
+		if (moon && moonGG) {
 			moon->dirTo = ssg.environment.curMoonDirTo;
 			moonGG->transform = Matrix4f::MakeTranslation(moon->dirTo.xyz() * 95.0f);
 		}
