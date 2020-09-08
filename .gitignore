@@ -348,3 +348,20 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+
+
+# SSPHH generated files
+!.keep
+*.exr
+test_terrain_scene*sph.exr
+test_terrain_scene*sph.json
+test_terrain_scene_SSHH*.png
+test_terrain_scene_SSHH*.exr
+corona_output/**/
+!corona_output/.keep
+!build/.keep
+imgui.ini
+output/**/
+!output/.keep
+!tests/.keep
