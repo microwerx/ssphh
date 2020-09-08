@@ -13,9 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="shaders">
-      <UniqueIdentifier>{0c104db6-85db-4737-a636-1a658ff6820f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\ssphh">
       <UniqueIdentifier>{f6183612-7ac0-4824-af10-91b653592a2e}</UniqueIdentifier>
     </Filter>
@@ -104,9 +101,6 @@
     </ClInclude>
     <ClInclude Include="include\tool_window.hpp">
       <Filter>Header Files\tools</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Header.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -244,115 +238,11 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="resources\shaders\default_slow_es30.frag">
-      <Filter>shaders</Filter>
-    </None>
-    <None Include="resources\shaders\default_slow_es30.vert">
-      <Filter>shaders</Filter>
-    </None>
-    <None Include="resources\shaders\basic_gles30.frag">
-      <Filter>shaders</Filter>
-    </None>
-    <None Include="resources\shaders\basic_gles30.vert">
-      <Filter>shaders</Filter>
-    </None>
-    <None Include="resources\shaders\cube_shadow_gl330.frag">
-      <Filter>shaders</Filter>
-    </None>
-    <None Include="resources\shaders\cube_shadow_gl330.vert">
-      <Filter>shaders</Filter>
-    </None>
-    <None Include="resources\shaders\default_fast_fs.glsl">
-      <Filter>shaders</Filter>
-    </None>
-    <None Include="resources\shaders\default_fast_vs.glsl">
-      <Filter>shaders</Filter>
-    </None>
-    <None Include="resources\shaders\default_slow.frag">
-      <Filter>shaders</Filter>
-    </None>
-    <None Include="resources\shaders\default_slow.vert">
-      <Filter>shaders</Filter>
-    </None>
-    <None Include="resources\shaders\default_slow_es20.frag">
-      <Filter>shaders</Filter>
-    </None>
-    <None Include="resources\shaders\default_slow_es20.vert">
-      <Filter>shaders</Filter>
-    </None>
-    <None Include="resources\shaders\default_z_fs.glsl">
-      <Filter>shaders</Filter>
-    </None>
-    <None Include="resources\shaders\default_z_vs.glsl">
-      <Filter>shaders</Filter>
-    </None>
-    <None Include="resources\shaders\deferred_fbo_gles30.frag">
-      <Filter>shaders</Filter>
-    </None>
-    <None Include="resources\shaders\deferred_fbo_gles30.vert">
-      <Filter>shaders</Filter>
-    </None>
-    <None Include="resources\shaders\gles30.frag">
-      <Filter>shaders</Filter>
-    </None>
-    <None Include="resources\shaders\gles30.vert">
-      <Filter>shaders</Filter>
-    </None>
-    <None Include="resources\shaders\glslang.conf">
-      <Filter>shaders</Filter>
-    </None>
-    <None Include="resources\shaders\glut_unwrapped_cubemap.frag">
-      <Filter>shaders</Filter>
-    </None>
-    <None Include="resources\shaders\glut_unwrapped_cubemap.vert">
-      <Filter>shaders</Filter>
-    </None>
-    <None Include="resources\shaders\postprocess.frag">
-      <Filter>shaders</Filter>
-    </None>
-    <None Include="resources\shaders\postprocess.vert">
-      <Filter>shaders</Filter>
-    </None>
-    <None Include="resources\shaders\simple_colored_vertex.vert">
-      <Filter>shaders</Filter>
-    </None>
-    <None Include="resources\shaders\skybox.frag">
-      <Filter>shaders</Filter>
-    </None>
-    <None Include="resources\shaders\skybox.vert">
-      <Filter>shaders</Filter>
-    </None>
-    <None Include="resources\shaders\sphl.frag">
-      <Filter>shaders</Filter>
-    </None>
-    <None Include="resources\shaders\sphl.vert">
-      <Filter>shaders</Filter>
-    </None>
-    <None Include="resources\shaders\sphl_cubemap.frag">
-      <Filter>shaders</Filter>
-    </None>
-    <None Include="resources\shaders\sphl_cubemap.vert">
-      <Filter>shaders</Filter>
-    </None>
-    <None Include="resources\shaders\sphl_gles30.frag">
-      <Filter>shaders</Filter>
-    </None>
-    <None Include="resources\shaders\sphl300.frag">
-      <Filter>shaders</Filter>
-    </None>
-    <None Include="resources\shaders\sphl300.vert">
-      <Filter>shaders</Filter>
-    </None>
     <None Include="..\.editorconfig" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="ssphh-icon.ico">
       <Filter>Resource Files</Filter>
     </Image>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="resources\shaders\LICENSE.txt">
-      <Filter>shaders</Filter>
-    </Text>
   </ItemGroup>
 </Project>
