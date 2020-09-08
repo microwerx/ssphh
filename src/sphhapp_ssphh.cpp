@@ -13,7 +13,7 @@ namespace SSPHH
 
 	void SSPHH_Application::UpdateSPHLs() {
 		if (!coefs_init) {
-			geosphere.load("resources/models/icos4.txt");
+			geosphere.load("ssphh-data/resources/models/icos4.txt");
 			//sphl.randomize();
 			//sphl.createMesh(geosphere);
 			//sphl.createLightProbe();

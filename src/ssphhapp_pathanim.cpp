@@ -6,7 +6,7 @@ extern Vf::AnimPathWindowPtr animpath_window_ptr;
 
 namespace SSPHH
 {
-	const std::string default_animation_path{ "resources/anim/animation.txt" };
+	const std::string default_animation_path{ "ssphh-data/resources/anim/animation.txt" };
 
 	void SSPHH_Application::PathAnim_LoadCameraPath(const std::string& path) {
 		cameraAnimation.clear();

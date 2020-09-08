@@ -70,7 +70,7 @@ namespace SSPHH {
 	void SSPHH_Application::InitImGui() {
 		//ImGuiIO& io = ImGui::GetIO();
 		//io.Fonts->AddFontDefault();
-		//io.Fonts->AddFontFromFileTTF("resources/fonts/dock-medium.otf", 16.0f);
+		//io.Fonts->AddFontFromFileTTF("ssphh-data/resources/fonts/dock-medium.otf", 16.0f);
 	}
 
 	void SSPHH_Application::RenderImGuiHUD() {

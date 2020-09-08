@@ -39,7 +39,7 @@ namespace SSPHH
 	//
 	//		if (key == '4')
 	//		{
-	//			python.addCommand(Df::PythonInterpreter::Command::PyRunFile, "resources/scripts/guitest.py");
+	//			python.addCommand(Df::PythonInterpreter::Command::PyRunFile, "ssphh-data/resources/scripts/guitest.py");
 	//		}
 	//
 	//		if (key == '5')
@@ -221,7 +221,7 @@ namespace SSPHH
 
 			if (key == "4") {
 				Interface.tools.shaderDebugChoice = Fluxions::clamp(Interface.tools.shaderDebugChoice - 1, 0, 20);
-				// python.addCommand(Df::PythonInterpreter::Command::PyRunFile, "resources/scripts/guitest.py");
+				// python.addCommand(Df::PythonInterpreter::Command::PyRunFile, "ssphh-data/resources/scripts/guitest.py");
 			}
 
 			if (key == "5") {

@@ -42,9 +42,9 @@ namespace SSPHH {
 	using namespace Fluxions;
 	using namespace Vf;
 
-	const char* default_scene_graph_path = "resources/scenes/test_texture_scene/test_terrain_scene.scn";
-	//const char* default_scene_graph_path = "resources/scenes/maze_scene/maze.scn";
-	const char* default_renderconfig_path = "resources/config/pb_monolithic_2020.renderconfig";
+	const char* default_scene_graph_path = "ssphh-data/resources/scenes/test_texture_scene/test_terrain_scene.scn";
+	//const char* default_scene_graph_path = "ssphh-data/resources/scenes/maze_scene/maze.scn";
+	const char* default_renderconfig_path = "ssphh-data/resources/config/pb_monolithic_2020.renderconfig";
 	//const char* default_coronaskyboxcubemap_path = "export_cubemap.png";
 	const std::string default_coronaskyboxcubemap_path{ "export_cubemap.png" };
 	const std::string default_pbsky_cubemap1_ppm{ "pbsky_cubemap_1.ppm" };
