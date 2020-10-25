@@ -14,6 +14,8 @@
 #pragma comment(lib, "user32.lib")		// Windows User library
 
 #pragma comment(lib, "fluxions.lib")
+#pragma comment(lib, "hatchetfish.lib")
+#pragma comment(lib, "fluxions-gte.lib")
 
 //#ifdef _WIN32
 //#pragma comment(lib, "libsodium.lib")
