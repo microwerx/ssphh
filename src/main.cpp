@@ -13,9 +13,10 @@
 #pragma comment(lib, "winmm.lib")		// Windows MultiMedia library
 #pragma comment(lib, "user32.lib")		// Windows User library
 
-#pragma comment(lib, "fluxions.lib")
 #pragma comment(lib, "hatchetfish.lib")
 #pragma comment(lib, "fluxions-gte.lib")
+#pragma comment(lib, "fluxions-base.lib")
+#pragma comment(lib, "fluxions.lib")
 
 //#ifdef _WIN32
 //#pragma comment(lib, "libsodium.lib")
