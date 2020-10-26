@@ -17,6 +17,7 @@
 #pragma comment(lib, "fluxions-gte.lib")
 #pragma comment(lib, "fluxions-base.lib")
 #pragma comment(lib, "fluxions.lib")
+#pragma comment(lib, "viperfish.lib")
 
 //#ifdef _WIN32
 //#pragma comment(lib, "libsodium.lib")
