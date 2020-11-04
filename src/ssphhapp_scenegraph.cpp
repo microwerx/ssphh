@@ -17,14 +17,14 @@ namespace SSPHH
 
 	void SSPHH_Application::Sun_AdvanceClock(double numSeconds, bool recomputeSky) {
 		pbsky_timeOffsetInSeconds += numSeconds;
-		ssg.environment.pbsky.SetTime(pbsky_localtime, (float)pbsky_timeOffsetInSeconds);
+		ssg.environment.setTime(pbsky_localtime, (float)pbsky_timeOffsetInSeconds);
 		Interface.recomputeSky = recomputeSky;
 	}
 
 	void SSPHH_Application::Sun_ResetClock() {
-		ssg.environment.pbsky.SetCivilDateTime(ssg.environment.pbsky_dtg);
-		ssg.environment.pbsky.computeAstroFromLocale();
-		pbsky_localtime = ssg.environment.pbsky.GetTime();
+		ssg.environment.setCivilDateTime(ssg.environment.getCivilDateTime());
+		ssg.environment.computeAstroFromLocale();
+		pbsky_localtime = ssg.environment.getTime();
 		pbsky_timeOffsetInSeconds = 0.0;
 		Interface.recomputeSky = true;
 		Sun_AdvanceClock(0.0, true);
@@ -35,8 +35,8 @@ namespace SSPHH
 		pbsky_localtime = time(NULL);
 		pbsky_timeOffsetInSeconds = 0.0;
 
-		ssg.environment.pbsky.SetTime(time(NULL), 0.0);
-		ssg.environment.pbsky.computeAstroFromLocale();
+		ssg.environment.setTime(time(NULL), 0.0);
+		ssg.environment.computeAstroFromLocale();
 		Interface.recomputeSky = true;
 		Sky_RegenHosekWilkieTextures();
 	}

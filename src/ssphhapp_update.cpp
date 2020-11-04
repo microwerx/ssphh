@@ -24,9 +24,9 @@ namespace SSPHH
 		//	pbskyAge = 0.0;
 		//}
 
-		ssg.environment.Update(ssg.getBoundingBox());
+		ssg.environment.update(ssg.getBoundingBox());
 		if (Interface.recomputeSky) {
-			ssg.environment.ComputePBSky();
+			ssg.environment.computePBSky();
 			Interface.recomputeSky = false;
 		}
 
@@ -79,7 +79,7 @@ namespace SSPHH
 
 		stopwatch.Stop();
 		my_hud_info.onUpdateTime = stopwatch.GetMillisecondsElapsed();
-		my_hud_info.pbskyTime = ssg.environment.LastSkyGenTime();
+		my_hud_info.pbskyTime = ssg.environment.lastSkyGenTime();
 
 		if (Interface.saveCoronaSCN) {
 			Interface.saveCoronaSCN = false;
@@ -238,8 +238,8 @@ namespace SSPHH
 		Interface.inverseFinalCameraMatrix = Interface.finalCameraMatrix.AsInverse();
 		Interface.cameraPosition = Interface.finalCameraMatrix.col4();
 
-		float pbskyLatitude = ssg.environment.pbsky.GetLatitude();
-		float pbskyLongitude = ssg.environment.pbsky.GetLongitude();
+		float pbskyLatitude = ssg.environment.getLatitude();
+		float pbskyLongitude = ssg.environment.getLongitude();
 
 		if (Interface.increaseLatitude) {
 			pbskyLatitude += 5.0f * (float)deltaTime;
@@ -255,7 +255,7 @@ namespace SSPHH
 		}
 
 		if (Interface.increaseLatitude || Interface.decreaseLatitude || Interface.increaseLongitude || Interface.decreaseLongitude) {
-			ssg.environment.pbsky.SetLocation(pbskyLatitude, pbskyLongitude);
+			ssg.environment.setLocation(pbskyLatitude, pbskyLongitude);
 			Sun_AdvanceClock(0.0, true);
 		}
 	}

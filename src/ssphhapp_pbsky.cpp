@@ -26,20 +26,22 @@ namespace SSPHH
 
 
 	void SSPHH_Application::Sky_RegenHosekWilkieTextures() {
-		ssg.environment.ComputePBSky();
+		ssg.environment.computePBSky();
 	}
 
 	void SSPHH_Application::Sky_SaveHosekWilkieTextures() {
 		HFLOGINFO("Saving pbsky ppm texture maps");
 		Hf::StopWatch stopwatch;
-		ssg.environment.pbsky.generatedSunCylMap.savePPM(default_pbsky_cylmap_ppm);
-		ssg.environment.pbsky.generatedSunCubeMap.savePPM(default_pbsky_cubemap1_ppm, 0);
-		ssg.environment.pbsky.generatedSunCubeMap.savePPM(default_pbsky_cubemap2_ppm, 1);
-		ssg.environment.pbsky.generatedSunCubeMap.savePPM(default_pbsky_cubemap3_ppm, 2);
-		ssg.environment.pbsky.generatedSunCubeMap.savePPM(default_pbsky_cubemap4_ppm, 3);
-		ssg.environment.pbsky.generatedSunCubeMap.savePPM(default_pbsky_cubemap5_ppm, 4);
-		ssg.environment.pbsky.generatedSunCubeMap.savePPM(default_pbsky_cubemap6_ppm, 5);
-		ssg.environment.pbsky.generatedSunCubeMap.saveCubePPM(default_pbsky_cubemap_ppm);
+		//ssg.environment.pbsky.generatedSunCylMap.savePPM(default_pbsky_cylmap_ppm);
+		//ssg.environment.pbsky.generatedSunCubeMap.savePPM(default_pbsky_cubemap1_ppm, 0);
+		//ssg.environment.pbsky.generatedSunCubeMap.savePPM(default_pbsky_cubemap2_ppm, 1);
+		//ssg.environment.pbsky.generatedSunCubeMap.savePPM(default_pbsky_cubemap3_ppm, 2);
+		//ssg.environment.pbsky.generatedSunCubeMap.savePPM(default_pbsky_cubemap4_ppm, 3);
+		//ssg.environment.pbsky.generatedSunCubeMap.savePPM(default_pbsky_cubemap5_ppm, 4);
+		//ssg.environment.pbsky.generatedSunCubeMap.savePPM(default_pbsky_cubemap6_ppm, 5);
+		//ssg.environment.pbsky.generatedSunCubeMap.saveCubePPM(default_pbsky_cubemap_ppm);
+		//ssg.environment.saveSunCylMap(default_pbsky_cylmap_ppm);
+		//ssg.environment.saveSunCubeMap(default_pbsky_cubemap_exr);
 		stopwatch.Stop();
 		HFLOGINFO("Saving pbsky ppm texture maps took %4.2f seconds", stopwatch.GetSecondsElapsed());
 	}
@@ -219,9 +221,9 @@ namespace SSPHH
 		if (uSunDirTo >= 0)
 			glUniform3fv(uSunDirTo, 1, ssg.environment.curSunDirTo.const_ptr());
 		if (uSunE0 >= 0)
-			glUniform4fv(uSunE0, 1, ssg.environment.pbsky.GetSunDiskRadiance().const_ptr());
+			glUniform4fv(uSunE0, 1, ssg.environment.getSunDiskRadiance().const_ptr());
 		if (uGroundE0 >= 0)
-			glUniform4fv(uGroundE0, 1, ssg.environment.pbsky.GetGroundRadiance().const_ptr());
+			glUniform4fv(uGroundE0, 1, ssg.environment.getGroundRadiance().const_ptr());
 		if (uIsHemisphere >= 0)
 			glUniform1i(uIsHemisphere, ssg.environment.isHemisphere);
 

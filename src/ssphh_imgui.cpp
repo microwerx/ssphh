@@ -695,7 +695,7 @@ namespace SSPHH {
 					Sun_AdvanceClock(-3600.0, true);
 				}
 
-				double turbidity = ssg.environment.pbsky.GetTurbidity();
+				double turbidity = ssg.environment.getTurbidity();
 				double lastTurbidity = turbidity;
 				ImGui::Text("Turbidity: % 2.1f", turbidity);
 				ImGui::SameLine();
@@ -707,24 +707,25 @@ namespace SSPHH {
 					turbidity -= 1.0;
 				}
 				turbidity = Fluxions::clamp<double>(turbidity, 1.0, 10.0);
-				ssg.environment.pbsky.SetTurbidity((float)turbidity);
+				ssg.environment.setTurbidity((float)turbidity);
 				if (turbidity != lastTurbidity) {
-					ssg.environment.pbsky.computeAstroFromLocale();
-					ssg.environment.ComputePBSky();
+					ssg.environment.computeAstroFromLocale();
+					ssg.environment.computePBSky();
 				}
 
-				ImGui::Text("DATE: %02d/%02d/%04d %02d:%02d:%02d%.3f -- LST : %2.3f",
-							ssg.environment.pbsky.getMonth(),
-							ssg.environment.pbsky.getDay(),
-							ssg.environment.pbsky.getYear(),
-							ssg.environment.pbsky.getHour(),
-							ssg.environment.pbsky.getMin(),
-							ssg.environment.pbsky.getSec(),
-							ssg.environment.pbsky.getSecFract(),
-							ssg.environment.pbsky.getLST());
+				//TODO: Fix this code below
+				//ImGui::Text("DATE: %02d/%02d/%04d %02d:%02d:%02d%.3f -- LST : %2.3f",
+				//			ssg.environment.pbsky.getMonth(),
+				//			ssg.environment.pbsky.getDay(),
+				//			ssg.environment.pbsky.getYear(),
+				//			ssg.environment.pbsky.getHour(),
+				//			ssg.environment.pbsky.getMin(),
+				//			ssg.environment.pbsky.getSec(),
+				//			ssg.environment.pbsky.getSecFract(),
+				//			ssg.environment.pbsky.getLST());
 				ImGui::Text("LAT: % 2.2f LONG: % 3.2f",
-							ssg.environment.pbsky.GetLatitude(),
-							ssg.environment.pbsky.GetLongitude());
+							ssg.environment.getLatitude(),
+							ssg.environment.getLongitude());
 				NEWLINE_SEPARATOR
 			}
 
