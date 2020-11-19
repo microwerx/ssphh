@@ -227,18 +227,18 @@ void MainApp::init() {
 		ssphh_widget_ptr = Vf::MakeSharedChild<SSPHH::SSPHH_Application>(vf_app_ptr, "ssphh");
 		//loading_window_ptr = Vf::MakeSharedChild<Vf::LoadingWindow>(vf_app_ptr, "Loading");
 
-		help_window_ptr = Vf::MakeSharedChild<HelpWindow>(vf_app_ptr, "Help");
-		stats_window_ptr = Vf::MakeSharedChild<Vf::StatsWindow>(vf_app_ptr, "Statistics");
-		scene_graph_window_ptr = Vf::MakeSharedChild<SceneGraphWindow>(vf_app_ptr, "Scene Graph");
-		scene_editor_window_ptr = Vf::MakeSharedChild<SceneEditorWindow>(vf_app_ptr, "Scene Editor");
-		ssphh_window_ptr = Vf::MakeSharedChild<SsphhWindow>(vf_app_ptr, "SSPHH Algorithm");
-		animpath_window_ptr = Vf::MakeSharedChild<Vf::AnimPathWindow>(vf_app_ptr, "Animation Path");
-		animation_window_ptr = Vf::MakeSharedChild<Vf::AnimationWindow>(vf_app_ptr, "Animation");
-		renderer_config_window_ptr = Vf::MakeSharedChild<RendererConfigWindow>(vf_app_ptr, "Renderer Config");
-		renderer_window_ptr = Vf::MakeSharedChild<RendererWindow>(vf_app_ptr, "Renderer");
-		ssphh_menu_ptr = Vf::MakeSharedChild<SsphhMenu>(vf_app_ptr, "Renderer");
-		tool_window_ptr = Vf::MakeSharedChild<ToolWindow>(vf_app_ptr, "Tools");
-		unicornfish_window_ptr = Vf::MakeSharedChild<UnicornfishWindow>(vf_app_ptr, "Unicornfish");
+		help_window_ptr = Vf::MakeSharedChild<HelpWindow>(vf_app_ptr, "F1 Help");
+		stats_window_ptr = Vf::MakeSharedChild<Vf::StatsWindow>(vf_app_ptr, "F2 Statistics");
+		scene_graph_window_ptr = Vf::MakeSharedChild<SceneGraphWindow>(vf_app_ptr, "F3 Scene Graph");
+		scene_editor_window_ptr = Vf::MakeSharedChild<SceneEditorWindow>(vf_app_ptr, "F4 Scene Editor");
+		ssphh_window_ptr = Vf::MakeSharedChild<SsphhWindow>(vf_app_ptr, "F5 SSPHH Algorithm");
+		animpath_window_ptr = Vf::MakeSharedChild<Vf::AnimPathWindow>(vf_app_ptr, "F6 Animation Path");
+		animation_window_ptr = Vf::MakeSharedChild<Vf::AnimationWindow>(vf_app_ptr, "F7 Animation");
+		renderer_config_window_ptr = Vf::MakeSharedChild<RendererConfigWindow>(vf_app_ptr, "F8 Renderer Config");
+		renderer_window_ptr = Vf::MakeSharedChild<RendererWindow>(vf_app_ptr, "F9 Renderer");
+		ssphh_menu_ptr = Vf::MakeSharedChild<SsphhMenu>(vf_app_ptr, "F10 SSPHH");
+		tool_window_ptr = Vf::MakeSharedChild<ToolWindow>(vf_app_ptr, "F11 Tools");
+		unicornfish_window_ptr = Vf::MakeSharedChild<UnicornfishWindow>(vf_app_ptr, "F12 Unicornfish");
 
 		ssphh_widget_ptr->hotkeyWindows["F1"] = help_window_ptr;
 		ssphh_widget_ptr->hotkeyWindows["F2"] = stats_window_ptr;
