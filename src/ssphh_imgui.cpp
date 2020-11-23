@@ -748,7 +748,7 @@ namespace SSPHH {
 						BoundingBoxf& bbox = group.bbox;
 						Vector3f meshSceneMin = bbox.minBounds;
 						Vector3f meshSceneMax = bbox.maxBounds;
-						Vector3f meshSceneSize = bbox.Size();
+						Vector3f meshSceneSize = bbox.size();
 						ImGui::Text("dimensions (%.1f %.1f %.1f)/(%.1f, %.1f, %.1f) [%.1f, %.1f, %.1f]",
 									meshSceneMin.x, meshSceneMin.y, meshSceneMin.z,
 									meshSceneMax.x, meshSceneMax.y, meshSceneMax.z,

@@ -84,8 +84,8 @@ namespace SSPHH {
 				if (!dirToLight) continue;
 
 				// Determine best projection for shadow map based on size of scene
-				float zfar = ssg.getBoundingBox().RadiusRounded() + 1.0f;
-				Vector3f center = ssg.getBoundingBox().Center();
+				float zfar = ssg.getBoundingBox().radiusRounded() + 1.0f;
+				Vector3f center = ssg.getBoundingBox().center();
 				Vector3f eye = center + dirToLight->ublock.dirTo.xyz() * zfar;
 				dirToLight->viewMatrix = Matrix4f::MakeLookAt(eye, center, { 0.0f, 1.0f, 0.0f });
 				dirToLight->ublock.shadow.x = 1.0f;
@@ -199,7 +199,7 @@ namespace SSPHH {
 				for (int face = 0; face < 6; face++) {
 
 					// Determine best projection for shadow map based on size of scene
-					float zfar = ssg.getBoundingBox().DiameterRounded() + 1.0f;
+					float zfar = ssg.getBoundingBox().diameterRounded() + 1.0f;
 					constexpr float znear = 1.0f;
 					Vector3f lightPosition = anisoLight->ublock.position.xyz();
 					anisoLight->ublock.shadow.x = znear;
