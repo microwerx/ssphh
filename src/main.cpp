@@ -17,6 +17,7 @@
 #pragma comment(lib, "hatchetfish.lib")
 #pragma comment(lib, "fluxions-gte.lib")
 #pragma comment(lib, "fluxions-base.lib")
+#pragma comment(lib, "fluxions-ssg.lib")
 #pragma comment(lib, "fluxions.lib")
 #pragma comment(lib, "starfish.lib")
 #pragma comment(lib, "viperfish.lib")
