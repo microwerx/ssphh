@@ -44,12 +44,12 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <TargetName>$(ProjectName)-debug</TargetName>
-    <IncludePath>$(SolutionDir)damselfish/include;$(SolutionDir)hatchetfish/include;$(SolutionDir)fluxions-gte/include;$(SolutionDir)fluxions-base/include;$(SolutionDir)starfish/include;$(SolutionDir)fluxions/include;$(SolutionDir)viperfish/include;$(SolutionDir)unicornfish/include;$(ProjectDir)include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)damselfish/include;$(SolutionDir)hatchetfish/include;$(SolutionDir)fluxions-gte/include;$(SolutionDir)fluxions-base/include;$(SolutionDir)fluxions-ssg/include;$(SolutionDir)starfish/include;$(SolutionDir)fluxions/include;$(SolutionDir)viperfish/include;$(SolutionDir)unicornfish/include;$(ProjectDir)include;$(IncludePath)</IncludePath>
     <LibraryPath>$(OutDir);$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <TargetName>$(ProjectName)-release</TargetName>
-    <IncludePath>$(SolutionDir)damselfish/include;$(SolutionDir)hatchetfish/include;$(SolutionDir)fluxions-gte/include;$(SolutionDir)fluxions-base/include;$(SolutionDir)starfish/include;$(SolutionDir)fluxions/include;$(SolutionDir)viperfish/include;$(SolutionDir)unicornfish/include;$(ProjectDir)include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)damselfish/include;$(SolutionDir)hatchetfish/include;$(SolutionDir)fluxions-gte/include;$(SolutionDir)fluxions-base/include;$(SolutionDir)fluxions-ssg/include;$(SolutionDir)starfish/include;$(SolutionDir)fluxions/include;$(SolutionDir)viperfish/include;$(SolutionDir)unicornfish/include;$(ProjectDir)include;$(IncludePath)</IncludePath>
     <LibraryPath>$(OutDir);$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

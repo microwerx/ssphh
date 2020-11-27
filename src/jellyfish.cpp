@@ -15,9 +15,11 @@ Jellyfish::~Jellyfish() {
 
 }
 
+
 void Jellyfish::OnInit(const std::vector<std::string>& args) {
 	Vf::Widget::OnInit(args);
 }
+
 
 void Jellyfish::OnKill() {
 
