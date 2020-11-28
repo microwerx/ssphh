@@ -13,6 +13,7 @@ endif()
 include_directories(${PROJECT_SOURCE_DIR}/include)
 
 add_executable(${PROJECT_NAME}
+	src/AuroraVisualization.cpp
 	src/camera_animation.cpp
 	src/Damselfish.cpp
 	src/DragDrop.cpp
@@ -62,7 +63,16 @@ add_executable(${PROJECT_NAME}
 target_link_libraries(
 	${PROJECT_NAME}
 	PRIVATE
-	fluxions)
+	hatchetfish
+	damselfish
+	fluxions-gte
+	fluxions-base
+	fluxions-ssg
+	fluxions-renderer
+	fluxions
+	starfish
+	viperfish
+	unicornfish)
 
 # find_library(SDL2_LIB NAMES SDL2)
 # find_library(SDL2_IMAGE_LIB NAMES SDL2_image)
@@ -97,6 +107,9 @@ target_link_libraries(${PROJECT_NAME} PRIVATE SDL2::SDL2_image)
 find_package(glfw3 CONFIG REQUIRED)
 target_link_libraries(${PROJECT_NAME} PRIVATE glfw)
 
+find_package(imgui CONFIG REQUIRED)
+target_link_libraries(${PROJECT_NAME} PRIVATE imgui::imgui)
+
 find_package(IlmBase CONFIG REQUIRED)
 # Note: 2 target(s) were omitted.
 target_link_libraries(${PROJECT_NAME} PRIVATE IlmBase::Iex IlmBase::Half IlmBase::Imath IlmBase::IexMath)
@@ -109,6 +122,9 @@ target_link_libraries(${PROJECT_NAME} PRIVATE czmq czmq-static)
 
 find_package(unofficial-sodium CONFIG REQUIRED)
 target_link_libraries(${PROJECT_NAME} PRIVATE unofficial-sodium::sodium)
+
+find_package(curl CONFIG REQUIRED)
+target_link_libraries(${PROJECT_NAME} PRIVATE curl)
 
 install(TARGETS ${PROJECT_NAME} DESTINATION bin)
 
