@@ -3,7 +3,9 @@
 
 #include <viperfish_window.hpp>
 
-class Fluxions::RendererContext;
+namespace {
+	class RendererContext;
+}
 
 class RendererConfigWindow : public Vf::Window {
 public:

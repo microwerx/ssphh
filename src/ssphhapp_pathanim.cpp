@@ -65,6 +65,10 @@ namespace SSPHH
 		float keyt = std::floor(t * fps) / fps;
 		float sect = std::floor(t);
 		switch (animpath_window_ptr->action) {
+		case Vf::PathAnimActions::None:
+			break;
+		case Vf::PathAnimActions::NumPathAnimActions:
+			break;
 		case Vf::PathAnimActions::GoToStart:
 			t = 0.0f;
 			break;

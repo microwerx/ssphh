@@ -71,7 +71,7 @@ void SceneGraphWindow::OnRenderDearImGui() {
 
 	if (ImGui::TreeNode("Maps")) {
 		for (auto& map : ssg->materials.maps) {
-			ImGui::Text(map.first.c_str());
+			ImGui::Text("%s", map.first.c_str());
 		}
 		ImGui::TreePop();
 	}
