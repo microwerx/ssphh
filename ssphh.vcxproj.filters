@@ -119,9 +119,6 @@
     <ClCompile Include="src\DragDrop.cpp">
       <Filter>Source Files\templates</Filter>
     </ClCompile>
-    <ClCompile Include="src\Damselfish.cpp">
-      <Filter>Source Files\other</Filter>
-    </ClCompile>
     <ClCompile Include="src\jellyfish.cpp">
       <Filter>Source Files\other</Filter>
     </ClCompile>
@@ -235,6 +232,9 @@
     </ClCompile>
     <ClCompile Include="src\AuroraVisualization.cpp">
       <Filter>Source Files\ssphh</Filter>
+    </ClCompile>
+    <ClCompile Include="src\damselfish.cpp">
+      <Filter>Source Files\other</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
