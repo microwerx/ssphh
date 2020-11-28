@@ -2,15 +2,14 @@ cmake_minimum_required(VERSION 3.13)
 project(ssphh)
 
 if (APPLE)
-    include_directories(/usr/local/include)
-    set(STD_CXX_FS c++fs)	
+   include_directories(/usr/local/include)
+   link_directories(/usr/local/lib)
 endif()
 
 if (!APPLE)
-	target_link_libraries(simplegame stdc++fs)
+	# target_link_libraries(simplegame stdc++fs)
 endif()
 
-include_directories(~/github/fluxions/include)
 include_directories(${PROJECT_SOURCE_DIR}/include)
 
 add_executable(${PROJECT_NAME}
@@ -23,7 +22,7 @@ add_executable(${PROJECT_NAME}
 	src/jellyfish.cpp
 	src/main.cpp
 	src/PbskyViewController.cpp
-	src/pch.cpp
+	# src/pch.cpp
 	src/renderer_config_window.cpp
 	src/renderer_window.cpp
 	src/scene_editor_window.cpp
@@ -60,37 +59,56 @@ add_executable(${PROJECT_NAME}
 	src/unicornfish_window.cpp
     )
 
-target_link_libraries(${PROJECT_NAME} fluxions)
-
-find_library(SDL2_LIB NAMES SDL2)
-find_library(SDL2_IMAGE_LIB NAMES SDL2_image)
-find_library(SDL2_MIXER_LIB NAMES SDL2_mixer)
-find_library(SDL2_TTF_LIB NAMES SDL2_ttf)
-find_library(CZMQ_LIB NAMES czmq)
-find_library(OPENGL_LIB NAMES GL)
-find_library(GLEW_LIB NAMES GLEW)
-find_library(GLFW_LIB NAMES glfw)
-find_library(CURL_LIB NAMES curl)
-find_library(PTHREAD_LIB NAMES pthread)
-find_library(ILMIMF_LIB NAMES IlmImf)
-find_library(ILMHALF_LIB NAMES Half)
-find_package(glfw3 3.2 REQUIRED)
-
 target_link_libraries(
-    ${PROJECT_NAME}
-    ${SDL2_LIB}
-    ${SDL2_IMAGE_LIB}
-    ${SDL2_MIXER_LIB}
-    ${SDL2_TTF_LIB}
-    ${CZMQ_LIB}
-    ${OPENGL_LIB}
-    ${GLEW_LIB}
-    ${GLFW_LIB}
-    ${CURL_LIB}
-    ${PTHREAD_LIB}
-    ${ILMIMF_LIB}
-    ${ILMHALF_LIB}
-    )
+	${PROJECT_NAME}
+	PRIVATE
+	fluxions)
+
+# find_library(SDL2_LIB NAMES SDL2)
+# find_library(SDL2_IMAGE_LIB NAMES SDL2_image)
+# find_library(SDL2_MIXER_LIB NAMES SDL2_mixer)
+# find_library(SDL2_TTF_LIB NAMES SDL2_ttf)
+# find_library(CZMQ_LIB NAMES czmq)
+# find_library(GLFW_LIB NAMES glfw)
+# find_library(CURL_LIB NAMES curl)
+# find_library(PTHREAD_LIB NAMES pthread)
+# find_library(ILMIMF_LIB NAMES IlmImf)
+# find_library(ILMHALF_LIB NAMES Half)
+
+
+if (APPLE)
+	find_package(OpenGL REQUIRED)
+endif()
+
+if (!APPLE)
+	find_library(OPENGL_LIB NAMES GL)
+	target_link_libraries(${PROJECT_NAME} PRIVATE GL)
+endif()
+
+find_package(SDL2 CONFIG REQUIRED)
+target_link_libraries(${PROJECT_NAME} PRIVATE SDL2::SDL2main SDL2::SDL2-static)
+
+find_package(sdl2-image CONFIG REQUIRED)
+target_link_libraries(${PROJECT_NAME} PRIVATE SDL2::SDL2_image)
+
+# find_library(GLEW REQUIRED)
+# target_link_libraries(${PROJECT_NAME} PRIVATE GLEW)
+
+find_package(glfw3 CONFIG REQUIRED)
+target_link_libraries(${PROJECT_NAME} PRIVATE glfw)
+
+find_package(IlmBase CONFIG REQUIRED)
+# Note: 2 target(s) were omitted.
+target_link_libraries(${PROJECT_NAME} PRIVATE IlmBase::Iex IlmBase::Half IlmBase::Imath IlmBase::IexMath)
+
+find_package(OpenEXR CONFIG REQUIRED)
+target_link_libraries(${PROJECT_NAME} PRIVATE OpenEXR::IlmImf OpenEXR::IlmImfUtil OpenEXR::IlmImfConfig)
+
+find_package(czmq CONFIG REQUIRED)
+target_link_libraries(${PROJECT_NAME} PRIVATE czmq czmq-static)
+
+find_package(unofficial-sodium CONFIG REQUIRED)
+target_link_libraries(${PROJECT_NAME} PRIVATE unofficial-sodium::sodium)
 
 install(TARGETS ${PROJECT_NAME} DESTINATION bin)
 
