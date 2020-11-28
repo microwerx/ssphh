@@ -884,7 +884,8 @@ namespace SSPHH {
 				const void* ptr = &sspl;
 #ifdef _WIN32
 				//va_list args = nullptr;
-#elif __unix__
+#endif
+#ifdef __unix__
 				// va_list args = va_list();
 #endif
 				const char* colors[4] = { "R", "G", "B", "Mono" };
@@ -947,7 +948,7 @@ namespace SSPHH {
 						sspl.randomizePosition = true;
 					}
 
-					ImGui::Text("Name %s", sspl.name(), 32);
+					ImGui::Text("Name %s (%d)", sspl.name(), 32);
 					ImGui::Separator();
 					ImGui::Text("Shadow build time: %.1fms", sspl.depthSphlMap.buildTime);
 
