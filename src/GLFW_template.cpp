@@ -206,7 +206,9 @@ namespace glfwt {
 		vfWidget->OnPreRender();
 		vfWidget->OnRender3D();
 		vfWidget->OnRender2D();
+		vfWidget->ImGuiNewFrame();
 		vfWidget->OnRenderDearImGui();
+		vfWidget->ImGuiEndFrame();
 		vfWidget->OnPostRender();
 	}
 } // namespace glfwt
@@ -241,15 +243,16 @@ bool GlfwTemplateInit(int argc, char** argv) {
 #endif
 	glfwt::pGlfwWindow = glfwCreateWindow(glfwt::screenWidth, glfwt::screenHeight, glfwt::windowTitle.c_str(), NULL, NULL);
 	if (!glfwt::pGlfwWindow) {
-		HFLOGWARN("Unable to use OpenGL Core Profile!");
-        glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-        glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-        glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GLFW_FALSE);
+		HFLOGWARN("Unable to use OpenGL CORE Profile!");
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 2);
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
+        glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GLFW_TRUE);
         glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_ANY_PROFILE);
+        glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GLFW_TRUE);
 		glfwt::pGlfwWindow = glfwCreateWindow(glfwt::screenWidth, glfwt::screenHeight, glfwt::windowTitle.c_str(), NULL, NULL);
 	}
 	if (!glfwt::pGlfwWindow) {
-		HFLOGWARN("Unable to use OpenGL Compatibility Profile!");
+		HFLOGWARN("Unable to use ANY OpenGL Profile!");
 		return false;
 	}
 	glfwMakeContextCurrent(glfwt::pGlfwWindow);
