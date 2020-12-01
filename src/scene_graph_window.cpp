@@ -56,13 +56,13 @@ void SceneGraphWindow::OnRenderDearImGui() {
 
 	if (ImGui::TreeNode("Materials")) {
 		for (auto& mtl : ssg->materials.mtls) {
-			if (ImGui::TreeNode(mtl.name.c_str())) {
-				ImGui::ColorEdit4("Kd", mtl.Kd.ptr(), ImGuiColorEditFlags_HDR | ImGuiColorEditFlags_Float);
-				ImGui::ColorEdit4("Ks", mtl.Ks.ptr(), ImGuiColorEditFlags_HDR | ImGuiColorEditFlags_Float);
-				ImGui::ColorEdit4("Ke", mtl.Ke.ptr(), ImGuiColorEditFlags_HDR | ImGuiColorEditFlags_Float);
-				ImGui::ColorEdit4("Kior", mtl.Kior.ptr(), ImGuiColorEditFlags_Float);
-				ImGui::DragFloat4("Ksroughness", mtl.Ksroughness.ptr(), 0.01f, -1.0f, 1.0f);
-				ImGui::DragFloat4("Kdroughness", mtl.Kdroughness.ptr(), 0.01f, -1.0f, 1.0f);
+			if (ImGui::TreeNode(mtl.name_cstr())) {
+				ImGui::ColorEdit4("Kd", mtl.base.Kd.ptr(), ImGuiColorEditFlags_HDR | ImGuiColorEditFlags_Float);
+				ImGui::ColorEdit4("Ks", mtl.base.Ks.ptr(), ImGuiColorEditFlags_HDR | ImGuiColorEditFlags_Float);
+				ImGui::ColorEdit4("Ke", mtl.base.Ke.ptr(), ImGuiColorEditFlags_HDR | ImGuiColorEditFlags_Float);
+				ImGui::ColorEdit4("Kior", mtl.base.Kior.ptr(), ImGuiColorEditFlags_Float);
+				ImGui::DragFloat4("Ksroughness", mtl.base.Ksroughness.ptr(), 0.01f, -1.0f, 1.0f);
+				ImGui::DragFloat4("Kdroughness", mtl.base.Kdroughness.ptr(), 0.01f, -1.0f, 1.0f);
 				ImGui::TreePop();
 			}
 		}

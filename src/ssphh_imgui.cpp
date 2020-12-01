@@ -259,8 +259,8 @@ namespace SSPHH {
 
 		ImGui::Separator();
 
-		ImGui::DragFloat("Exposure", &ssg.environment.toneMapExposure(), 0.1f, -12.0f, 12.0f, "%.1f");
-		ImGui::DragFloat("Gamma", &ssg.environment.toneMapGamma(), 0.1f, 1.0f, 6.0f, "%.1f");
+		ImGui::DragFloat("Exposure", &ssg.environment.base.toneMapExposure(), 0.1f, -12.0f, 12.0f, "%.1f");
+		ImGui::DragFloat("Gamma", &ssg.environment.base.toneMapGamma(), 0.1f, 1.0f, 6.0f, "%.1f");
 
 		ImGui::Separator();
 

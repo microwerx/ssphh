@@ -73,7 +73,7 @@ namespace SSPHH
 			else {
 				lightProbe.loadPPM(fpi.shortestPath());
 				//lightProbe.scaleColors(1.0f / (2.5f * powf(2.0f, ssg.environment.toneMapExposure)));
-				lightProbe.ReverseSRGB().ReverseToneMap(ssg.environment.toneMapExposure());
+				lightProbe.ReverseSRGB().ReverseToneMap(ssg.environment.base.toneMapExposure());
 			}
 			lightProbe.convertRectToCubeMap();
 
@@ -196,11 +196,11 @@ namespace SSPHH
 
 		glUseProgram(program);
 		if (uToneMapScale >= 0)
-			glUniform1f(uToneMapScale, 2.5f * powf(2.0f, ssg.environment.toneMapExposure()));
+			glUniform1f(uToneMapScale, 2.5f * powf(2.0f, ssg.environment.base.toneMapExposure()));
 		if (uToneMapExposure >= 0)
-			glUniform1f(uToneMapExposure, 2.5f * powf(2.0f, ssg.environment.toneMapExposure()));
+			glUniform1f(uToneMapExposure, 2.5f * powf(2.0f, ssg.environment.base.toneMapExposure()));
 		if (uToneMapGamma >= 0)
-			glUniform1f(uToneMapGamma, ssg.environment.toneMapGamma());
+			glUniform1f(uToneMapGamma, ssg.environment.base.toneMapGamma());
 		if (uCubeTexture >= 0) {
 			//FxBindTextureAndSampler(ssg.environment.pbskyColorMapUnit, GL_TEXTURE_CUBE_MAP, ssg.environment.pbskyColorMapId, ssg.environment.pbskyColorMapSamplerId);
 			//glUniform1i(uCubeTexture, ssg.environment.pbskyColorMapUnit);
