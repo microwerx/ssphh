@@ -6,7 +6,8 @@
 namespace SSPHH {
 	class AuroraViz : public Vf::Widget {
 	public:
-		AuroraViz() {}
+		AuroraViz()
+			:Vf::Widget("AuroraViz") {}
 
 		void OnInit() override { load(); }
 		void OnUpdate(double timeStamp) override;
