@@ -60,10 +60,11 @@ namespace SSPHH
 			return;
 		}
 
-		ssg.addPath("ssphh-data/resources/models/");
-		ssg.addPath("ssphh-data/resources/textures/");
-		ssg.addPath("ssphh-data/resources/scenes/");
-		ssg.addPath("ssphh-data/resources/scenes/test_texture_scene/");
+		ssg.pathFinder.clear();
+		ssg.pathFinder.push("ssphh-data/resources/models/");
+		ssg.pathFinder.push("ssphh-data/resources/textures/");
+		ssg.pathFinder.push("ssphh-data/resources/scenes/");
+		ssg.pathFinder.push("ssphh-data/resources/scenes/test_texture_scene/");
 		ssg.Load(sceneFilename);
 
 		// Configure astronomical models/textures/lights
@@ -74,6 +75,9 @@ namespace SSPHH
 		ssg.currentTransform.LoadIdentity();
 		ssg.currentTransform.Translate(0.0f, 2.0f, 0.0f);
 		ssg.addGeometryGroup("moon", "ssphh-data/resources/models/moon.obj");
+
+		double memoryUsed = ssg.sizeInBytes() / 1048576.0;
+		HFLOGINFO("Scene graph memory usage: %5.2f MB", memoryUsed);
 
 		Interface.sceneName = ssg.name_str();
 	}

@@ -73,8 +73,10 @@ namespace SSPHH
 
 		rendererContext.loadShaders();
 		rendererContext.loadTextures();
-		rendererContext.loadMaps(ssg.materials.maps);
+		rendererContext.loadMaps(ssg.maps);
+		//rendererContext.loadMapsDEPRECATED(ssg.materials.maps);
 		rendererContext.makeFramebuffers();
+		rendererContext.invalidate_caches();
 
 		//RendererConfig& defaultRenderConfig = rendererContext.rendererConfigs["default"];
 		//defaultRenderConfig.zShaderProgram = rendererContext.findProgram("pb_monolithic", "DefaultZProgram");
