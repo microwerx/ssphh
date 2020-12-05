@@ -21,23 +21,9 @@ namespace SSPHH {
 		// Render VIZ into FBO
 		// Render POST with FBO to screen
 
-		//SetupRenderGLES30();
-		//RenderGLES30_Shadows();
-		//RenderGLES30Scene();
-
-		//RenderGLES30SPHLs();
-		//RenderGL11Hierarchies();
-
-		//if (counter == 1)
-		//	RenderTest1SunShadows();
-		//if (counter == 2)
-		//	RenderTest2SphereCubeMap();
-		//if (counter == 3)
-		//	RenderTest3EnviroCubeMap();
-
-		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, 0);
-		glBindTexture(GL_TEXTURE_CUBE_MAP, 0);
+		//glActiveTexture(GL_TEXTURE0);
+		//glBindTexture(GL_TEXTURE_2D, 0);
+		//glBindTexture(GL_TEXTURE_CUBE_MAP, 0);
 
 		if (Interface.drawRectShadows) {
 			RenderGLES30_RectShadows();
@@ -68,6 +54,7 @@ namespace SSPHH {
 		FxSetDefaultErrorMessage();
 	}
 
+
 	void SSPHH_Application::RenderGLES30_SkyBox() {
 		FxSetErrorMessage(__FILE__, __LINE__, "%s", __FUNCTION__);
 
@@ -83,6 +70,7 @@ namespace SSPHH {
 		}
 	}
 
+
 	void SSPHH_Application::RenderGLES30_SceneGraph() {
 		FxSetErrorMessage(__FILE__, __LINE__, "%s", __FUNCTION__);
 
@@ -94,9 +82,6 @@ namespace SSPHH {
 			rc.shaderDebugLight = Interface.tools.shaderDebugLight;
 			rc.shaderDebugSphl = Interface.tools.shaderDebugSphl;
 			Fluxions::RenderImage(rendererContext, ssg, renderername, renderconfigname);
-			
-			//auto renderer = rendererContext.renderers[renderername];
-			//auroraViz.RenderFrame(renderer, (int)GetElapsedTime());
 		}
 
 		if (FxCheckLogErrors()) {
@@ -104,6 +89,7 @@ namespace SSPHH {
 			HFLOGERROR("Disabling PBR stage due to OpenGL Error-- Please rectify!");
 		}
 	}
+
 
 	void SSPHH_Application::RenderGLES30_VIZ() {
 		FxSetErrorMessage(__FILE__, __LINE__, "%s", __FUNCTION__);
@@ -132,6 +118,7 @@ namespace SSPHH {
 		}
 	}
 
+
 	void SSPHH_Application::RenderGLES30_PostProcess() {
 		FxSetErrorMessage(__FILE__, __LINE__, "%s", __FUNCTION__);
 
@@ -151,32 +138,12 @@ namespace SSPHH {
 	void SSPHH_Application::RenderGLES30Scene() {
 		FxSetErrorMessage(__FILE__, __LINE__, "%s", __FUNCTION__);
 
-		//RendererConfig& defaultRenderConfig = rendererContext.rendererConfigs["pbr_shader"];
-		//defaultRenderConfig.clearDepthBuffer = true;
-		//defaultRenderConfig.clearColorBuffer = false;
-		//defaultRenderConfig.viewportRect.x = 0;
-		//defaultRenderConfig.viewportRect.y = 0;
-		//defaultRenderConfig.viewportRect.w = (size_t)screenWidth;
-		//defaultRenderConfig.viewportRect.h = (size_t)screenHeight;
-		//defaultRenderConfig.preCameraMatrix = Interface.inversePreCameraMatrix;
-		//defaultRenderConfig.postCameraMatrix = Interface.inversePostCameraMatrix;
-		//defaultRenderConfig.fov = Interface.ssg.cameraFOV;
-		//defaultRenderConfig.isCubeMap = false;
-		//defaultRenderConfig.useSceneCamera = true;
-		//defaultRenderConfig.useZOnly = false;
-		//defaultRenderConfig.useMaterials = true;
-		//defaultRenderConfig.shaderDebugChoice = Interface.tools.shaderDebugChoice;
-		//defaultRenderConfig.shaderDebugLight = Interface.tools.shaderDebugLight;
-		//defaultRenderConfig.shaderDebugSphl = Interface.tools.shaderDebugSphl;
-
 		while (glGetError());
 		const std::string renderername{ "skybox" };
 		if (rendererContext.renderers.count(renderername)) {
 			const std::string& renderconfigname = rendererContext.renderers[renderername].renderconfigname;
 			Fluxions::RenderImage(rendererContext, ssg, renderername, renderconfigname);
 		}
-		//ssg.AdvancedRender(defaultRenderConfig);
-		//ssg.camera.actualViewMatrix = defaultRenderConfig.cameraMatrix_;
 		while (glGetError()) HFLOGWARN("AdvancedRender() ERROR!");
 
 		if (Interface.drawSkyBox) {
