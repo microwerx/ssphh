@@ -1,13 +1,14 @@
 cmake_minimum_required(VERSION 3.13)
 project(ssphh)
 
-if (APPLE)
-   include_directories(/usr/local/include)
-   link_directories(/usr/local/lib)
-endif()
+set(CMAKE_C_STANDARD            99)
+set(CMAKE_C_STANDARD_REQUIRED   ON)
+set(CMAKE_CXX_EXTENSIONS        OFF)
+set(CMAKE_CXX_STANDARD          17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-if (!APPLE)
-	# target_link_libraries(simplegame stdc++fs)
+if (APPLE)
+    include_directories(/usr/local/include)
 endif()
 
 include_directories(${PROJECT_SOURCE_DIR}/include)
@@ -123,8 +124,13 @@ target_link_libraries(${PROJECT_NAME} PRIVATE czmq czmq-static)
 find_package(unofficial-sodium CONFIG REQUIRED)
 target_link_libraries(${PROJECT_NAME} PRIVATE unofficial-sodium::sodium)
 
+if (APPLE)
 find_package(curl CONFIG REQUIRED)
 target_link_libraries(${PROJECT_NAME} PRIVATE curl)
+endif()
+
+find_package(CURL CONFIG REQUIRED)
+target_link_libraries(${PROJECT_NAME} PRIVATE CURL::libcurl)
 
 install(TARGETS ${PROJECT_NAME} DESTINATION bin)
 
