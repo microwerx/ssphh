@@ -75,18 +75,6 @@ target_link_libraries(
 	viperfish
 	unicornfish)
 
-# find_library(SDL2_LIB NAMES SDL2)
-# find_library(SDL2_IMAGE_LIB NAMES SDL2_image)
-# find_library(SDL2_MIXER_LIB NAMES SDL2_mixer)
-# find_library(SDL2_TTF_LIB NAMES SDL2_ttf)
-# find_library(CZMQ_LIB NAMES czmq)
-# find_library(GLFW_LIB NAMES glfw)
-# find_library(CURL_LIB NAMES curl)
-# find_library(PTHREAD_LIB NAMES pthread)
-# find_library(ILMIMF_LIB NAMES IlmImf)
-# find_library(ILMHALF_LIB NAMES Half)
-
-
 if (APPLE)
 	find_package(OpenGL REQUIRED)
 endif()
@@ -101,9 +89,6 @@ target_link_libraries(${PROJECT_NAME} PRIVATE SDL2::SDL2main SDL2::SDL2-static)
 
 find_package(sdl2-image CONFIG REQUIRED)
 target_link_libraries(${PROJECT_NAME} PRIVATE SDL2::SDL2_image)
-
-# find_library(GLEW REQUIRED)
-# target_link_libraries(${PROJECT_NAME} PRIVATE GLEW)
 
 find_package(glfw3 CONFIG REQUIRED)
 target_link_libraries(${PROJECT_NAME} PRIVATE glfw)
@@ -124,10 +109,10 @@ target_link_libraries(${PROJECT_NAME} PRIVATE czmq czmq-static)
 find_package(unofficial-sodium CONFIG REQUIRED)
 target_link_libraries(${PROJECT_NAME} PRIVATE unofficial-sodium::sodium)
 
-if (APPLE)
-find_package(curl CONFIG REQUIRED)
-target_link_libraries(${PROJECT_NAME} PRIVATE curl)
-endif()
+#if (APPLE)
+#	find_package(curl CONFIG REQUIRED)
+#	target_link_libraries(${PROJECT_NAME} PRIVATE curl)
+#endif()
 
 find_package(CURL CONFIG REQUIRED)
 target_link_libraries(${PROJECT_NAME} PRIVATE CURL::libcurl)
