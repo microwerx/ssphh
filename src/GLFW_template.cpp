@@ -269,15 +269,14 @@ bool GlfwTemplateInit(int argc, char** argv) {
 
 void GlfwTemplateWidget(Vf::Widget::SharedPtr widget) {
 	glfwt::vfWidget = widget;
-}
+
+    // Initialize Viperfish widgets
+    if (glfwt::vfWidget) {
+        glfwt::vfWidget->Init(glfwt::args);
+        glfwt::vfWidget->OnReshape(glfwt::screenWidth, glfwt::screenHeight);
+    }}
 
 void GlfwTemplateMainLoop() {
-	// Initialize Viperfish widgets
-	if (glfwt::vfWidget) {
-		glfwt::vfWidget->Init(glfwt::args);
-		glfwt::vfWidget->OnReshape(glfwt::screenWidth, glfwt::screenHeight);
-	}
-
 	// Loop until the user closes the window
 	double t0 = glfwGetTime();
 	while (!glfwWindowShouldClose(glfwt::pGlfwWindow) && !glfwt::exitMainloop) {
